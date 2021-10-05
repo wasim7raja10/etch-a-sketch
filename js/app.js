@@ -1,4 +1,5 @@
 const container = document.querySelector('.container');
+const clrBtn = document.querySelector('.clear');
 
 for (let i = 0; i < 16; i++) {
   for (let j = 0; j < 16; j++) {
@@ -11,6 +12,14 @@ for (let i = 0; i < 16; i++) {
 }
 
 container.childNodes.forEach((x) => {
-  const mark = () => x.style.background="black";
+  const mark = () => x.style.background = "black";
   x.addEventListener('mouseenter', mark);
 })
+
+function clear() {
+  container.childNodes.forEach((x) => {
+    x.style.background = null;
+  })
+}
+
+clrBtn.addEventListener('click', clear);
