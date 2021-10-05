@@ -9,3 +9,8 @@ for (let i = 0; i < 16; i++) {
     container.appendChild(square);
   }
 }
+
+container.childNodes.forEach((x) => {
+  const mark = () => x.style.background="black";
+  x.addEventListener('mouseenter', mark);
+})
