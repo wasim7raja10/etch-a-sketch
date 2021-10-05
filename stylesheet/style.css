@@ -1,0 +1,22 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+h1 {
+  text-align: center;
+}
+
+.container {
+  border: 0.1rem solid black;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 32.16rem;
+  margin: 0 auto;
+}
+
