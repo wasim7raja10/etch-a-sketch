@@ -20,6 +20,7 @@ function clear() {
   container.childNodes.forEach((x) => {
     x.style.background = null;
   })
+  const numberSide = parseInt(prompt("enter number of square in each side"));
 }
 
 clrBtn.addEventListener('click', clear);
