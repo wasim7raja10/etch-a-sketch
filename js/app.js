@@ -6,7 +6,6 @@ for (let i = 0; i < 16; i++) {
     square.setAttribute(
       "style", "width: 2rem; height: 2rem; display: inline-block"
     );
-    square.textContent = i;
     container.appendChild(square);
   }
 }
