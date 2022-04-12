@@ -6,22 +6,45 @@ html {
 *:before,
 *:after {
   box-sizing: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  width: 100%;
+  height: 100vw;
 }
 
 h1 {
   text-align: center;
+  padding-top: 1rem;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin: 1rem 0;
+}
+
+#clear {
+  all: unset;
+  padding: 0.5rem;
+  border: 1px solid #000;
+  border-radius: 0.2rem;
+}
+
+#clear:focus {
+  outline: #000 solid 1px;
 }
 
 .container {
-  border: 0.1rem solid black;
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 32.16rem;
+  max-height: 40rem;
+  max-width: 40rem;
+  width: calc(100% - 1rem);
+  height: calc(100% - 1rem);
+  display: grid;
   margin: 0 auto;
-}
-
-button {
-  padding: 0.5rem 1rem;
-  display: block;
-  margin: 2rem auto;
+  border: 1px solid #000;
 }

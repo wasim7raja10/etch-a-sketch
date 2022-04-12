@@ -1,43 +1,52 @@
-const container = document.querySelector('.container');
-const clrBtn = document.querySelector('.clear');
-const numberSide = 16
+"strict mode";
 
-function makeGrid(numberSide) {
-  for (let i = 0; i < numberSide; i++) {
-    for (let j = 0; j < numberSide; j++) {
+const colorPicker = document.querySelector("#color-picker");
+const numSquare = document.querySelector("#num-square");
+const clrBtn = document.querySelector("#clear");
+const container = document.querySelector(".container");
+
+let color = colorPicker.value;
+let num = numSquare.value;
+
+container.style.cssText = `grid-template-columns: repeat(${num}, 1fr);`;
+
+for (let i = 0; i < num; i++) {
+  for (let j = 0; j < num; j++) {
+    const square = document.createElement("div");
+    square.classList.add("square");
+    square.style.cssText = `border: 1px solid #c2c2c2;`;
+    container.appendChild(square);
+  }
+}
+
+colorPicker.addEventListener("input", changeColor);
+function changeColor() {
+  color = colorPicker.value;
+  console.log(color);
+}
+
+numSquare.addEventListener("input", changeNum);
+function changeNum() {
+  num = numSquare.value;
+  container.innerHTML = "";
+  container.style.cssText = `grid-template-columns: repeat(${num}, 1fr);`;
+
+  for (let i = 0; i < num; i++) {
+    for (let j = 0; j < num; j++) {
       const square = document.createElement("div");
-      square.setAttribute(
-        "style", `width: ${32/numberSide}rem; height: ${32/numberSide}rem; display: inline-block`
-      );
+      square.classList.add("square");
+      square.style.cssText = `border: 1px solid #c2c2c2;`;
       container.appendChild(square);
     }
   }
 }
 
-function markSquare() {
-  container.childNodes.forEach((x) => {
-    const mark = () => x.style.background = "black";
-    x.addEventListener('mouseenter', mark);
-  })
+container.addEventListener("mouseover", fillColor);
+container.addEventListener("touchstart", fillColor);
+function fillColor(e) {
+  if (e.target.classList.contains("square")) {
+    e.target.style.cssText = `background-color: ${color};`;
+  }
 }
 
-function removeMark() {
-  container.childNodes.forEach((x) => {
-    x.style.background = null;
-  })
-}
-
-makeGrid(numberSide);
-markSquare();
-
-function clear() {
-  removeMark();
-  const numberSide = parseInt(
-    prompt("enter number of square in each side")
-  );
-  container.innerHTML = null;
-  makeGrid(numberSide);
-  markSquare();
-}
-
-clrBtn.addEventListener('click', clear);
+clrBtn.addEventListener("click", changeNum);
